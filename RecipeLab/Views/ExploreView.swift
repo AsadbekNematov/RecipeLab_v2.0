@@ -32,6 +32,7 @@ struct ExploreView: View {
     ]
 
     @State private var likedRecipes: [Recipe] = []
+    @State private var currentIndex = 0
     @State private var previousIndex: Int? = nil
 
     var body: some View {
