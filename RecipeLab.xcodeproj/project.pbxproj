@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F72B5A392A0AAAE60049B3E3 /* RecipeLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B5A382A0AAAE60049B3E3 /* RecipeLabApp.swift */; };
+		F72B5A3B2A0AAAE60049B3E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B5A3A2A0AAAE60049B3E3 /* ContentView.swift */; };
+		F72B5A3D2A0AAAE80049B3E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F72B5A3C2A0AAAE80049B3E3 /* Assets.xcassets */; };
+		F72B5A402A0AAAE80049B3E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F72B5A3F2A0AAAE80049B3E3 /* Preview Assets.xcassets */; };
+		F72B5A5B2A0AADE70049B3E3 /* IdentifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B5A5A2A0AADE70049B3E3 /* IdentifyView.swift */; };
+		F72B5A5D2A0AAE050049B3E3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B5A5C2A0AAE050049B3E3 /* MainView.swift */; };
+		F72B5A612A0AAE350049B3E3 /* FavoritesVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B5A602A0AAE350049B3E3 /* FavoritesVIew.swift */; };
+		F76704EF2A0AC50200E89ED6 /* Lorem.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76704EB2A0AC50200E89ED6 /* Lorem.xcassets */; };
+		F76704F02A0AC50200E89ED6 /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76704EC2A0AC50200E89ED6 /* LoremIpsum.swift */; };
+		F76704F12A0AC50200E89ED6 /* MediaCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76704ED2A0AC50200E89ED6 /* MediaCredits.swift */; };
+		F76704F22A0AC50200E89ED6 /* LoremPicsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76704EE2A0AC50200E89ED6 /* LoremPicsum.swift */; };
+		F76704F52A0AC61200E89ED6 /* LoremSwiftum in Frameworks */ = {isa = PBXBuildFile; productRef = F76704F42A0AC61200E89ED6 /* LoremSwiftum */; };
+		F76704F72A0B1D5300E89ED6 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76704F62A0B1D5300E89ED6 /* ExploreView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F72B5A352A0AAAE60049B3E3 /* RecipeLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = RecipeLab.app; path = "/Users/asadbeknematov/Desktop/Projects/RecipeLab_v2.0/build/Debug-iphoneos/RecipeLab.app"; sourceTree = "<absolute>"; };
+		F72B5A382A0AAAE60049B3E3 /* RecipeLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLabApp.swift; sourceTree = "<group>"; };
+		F72B5A3A2A0AAAE60049B3E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F72B5A3C2A0AAAE80049B3E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F72B5A3F2A0AAAE80049B3E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F72B5A5A2A0AADE70049B3E3 /* IdentifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyView.swift; sourceTree = "<group>"; };
+		F72B5A5C2A0AAE050049B3E3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F72B5A602A0AAE350049B3E3 /* FavoritesVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVIew.swift; sourceTree = "<group>"; };
+		F76704EB2A0AC50200E89ED6 /* Lorem.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Lorem.xcassets; sourceTree = "<group>"; };
+		F76704EC2A0AC50200E89ED6 /* LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremIpsum.swift; sourceTree = "<group>"; };
+		F76704ED2A0AC50200E89ED6 /* MediaCredits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCredits.swift; sourceTree = "<group>"; };
+		F76704EE2A0AC50200E89ED6 /* LoremPicsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremPicsum.swift; sourceTree = "<group>"; };
+		F76704F62A0B1D5300E89ED6 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F72B5A322A0AAAE60049B3E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F76704F52A0AC61200E89ED6 /* LoremSwiftum in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F72B5A2C2A0AAAE60049B3E3 = {
+			isa = PBXGroup;
+			children = (
+				F72B5A372A0AAAE60049B3E3 /* RecipeLab */,
+				F76704F32A0AC61200E89ED6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F72B5A372A0AAAE60049B3E3 /* RecipeLab */ = {
+			isa = PBXGroup;
+			children = (
+				F76704EA2A0AC50200E89ED6 /* Lorem */,
+				F72B5A382A0AAAE60049B3E3 /* RecipeLabApp.swift */,
+				F72B5A3A2A0AAAE60049B3E3 /* ContentView.swift */,
+				F72B5A512A0AADAC0049B3E3 /* Views */,
+				F72B5A3C2A0AAAE80049B3E3 /* Assets.xcassets */,
+				F72B5A3E2A0AAAE80049B3E3 /* Preview Content */,
+			);
+			path = RecipeLab;
+			sourceTree = "<group>";
+		};
+		F72B5A3E2A0AAAE80049B3E3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F72B5A3F2A0AAAE80049B3E3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F72B5A512A0AADAC0049B3E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F76704F62A0B1D5300E89ED6 /* ExploreView.swift */,
+				F72B5A5C2A0AAE050049B3E3 /* MainView.swift */,
+				F72B5A602A0AAE350049B3E3 /* FavoritesVIew.swift */,
+				F72B5A5A2A0AADE70049B3E3 /* IdentifyView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F76704EA2A0AC50200E89ED6 /* Lorem */ = {
+			isa = PBXGroup;
+			children = (
+				F76704EB2A0AC50200E89ED6 /* Lorem.xcassets */,
+				F76704EC2A0AC50200E89ED6 /* LoremIpsum.swift */,
+				F76704ED2A0AC50200E89ED6 /* MediaCredits.swift */,
+				F76704EE2A0AC50200E89ED6 /* LoremPicsum.swift */,
+			);
+			path = Lorem;
+			sourceTree = "<group>";
+		};
+		F76704F32A0AC61200E89ED6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F72B5A342A0AAAE60049B3E3 /* RecipeLab */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F72B5A432A0AAAE80049B3E3 /* Build configuration list for PBXNativeTarget "RecipeLab" */;
+			buildPhases = (
+				F72B5A312A0AAAE60049B3E3 /* Sources */,
+				F72B5A322A0AAAE60049B3E3 /* Frameworks */,
+				F72B5A332A0AAAE60049B3E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecipeLab;
+			packageProductDependencies = (
+				F76704F42A0AC61200E89ED6 /* LoremSwiftum */,
+			);
+			productName = RecipeLab;
+			productReference = F72B5A352A0AAAE60049B3E3 /* RecipeLab.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F72B5A2D2A0AAAE60049B3E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					F72B5A342A0AAAE60049B3E3 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = F72B5A302A0AAAE60049B3E3 /* Build configuration list for PBXProject "RecipeLab" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F72B5A2C2A0AAAE60049B3E3;
+			packageReferences = (
+				F72B5A642A0AB2C10049B3E3 /* XCRemoteSwiftPackageReference "LoremSwiftum" */,
+			);
+			productRefGroup = F72B5A2C2A0AAAE60049B3E3;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F72B5A342A0AAAE60049B3E3 /* RecipeLab */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F72B5A332A0AAAE60049B3E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F76704EF2A0AC50200E89ED6 /* Lorem.xcassets in Resources */,
+				F72B5A402A0AAAE80049B3E3 /* Preview Assets.xcassets in Resources */,
+				F72B5A3D2A0AAAE80049B3E3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F72B5A312A0AAAE60049B3E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F72B5A5D2A0AAE050049B3E3 /* MainView.swift in Sources */,
+				F76704F72A0B1D5300E89ED6 /* ExploreView.swift in Sources */,
+				F72B5A3B2A0AAAE60049B3E3 /* ContentView.swift in Sources */,
+				F76704F02A0AC50200E89ED6 /* LoremIpsum.swift in Sources */,
+				F76704F12A0AC50200E89ED6 /* MediaCredits.swift in Sources */,
+				F72B5A612A0AAE350049B3E3 /* FavoritesVIew.swift in Sources */,
+				F72B5A5B2A0AADE70049B3E3 /* IdentifyView.swift in Sources */,
+				F72B5A392A0AAAE60049B3E3 /* RecipeLabApp.swift in Sources */,
+				F76704F22A0AC50200E89ED6 /* LoremPicsum.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F72B5A412A0AAAE80049B3E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F72B5A422A0AAAE80049B3E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F72B5A442A0AAAE80049B3E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RecipeLab/Preview Content\"";
+				DEVELOPMENT_TEAM = 6SU8AZ6LDT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.genepol.RecipeLab;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F72B5A452A0AAAE80049B3E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RecipeLab/Preview Content\"";
+				DEVELOPMENT_TEAM = 6SU8AZ6LDT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.genepol.RecipeLab;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F72B5A302A0AAAE60049B3E3 /* Build configuration list for PBXProject "RecipeLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F72B5A412A0AAAE80049B3E3 /* Debug */,
+				F72B5A422A0AAAE80049B3E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F72B5A432A0AAAE80049B3E3 /* Build configuration list for PBXNativeTarget "RecipeLab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F72B5A442A0AAAE80049B3E3 /* Debug */,
+				F72B5A452A0AAAE80049B3E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F72B5A642A0AB2C10049B3E3 /* XCRemoteSwiftPackageReference "LoremSwiftum" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lukaskubanek/LoremSwiftum.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F76704F42A0AC61200E89ED6 /* LoremSwiftum */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F72B5A642A0AB2C10049B3E3 /* XCRemoteSwiftPackageReference "LoremSwiftum" */;
+			productName = LoremSwiftum;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F72B5A2D2A0AAAE60049B3E3 /* Project object */;
+}
