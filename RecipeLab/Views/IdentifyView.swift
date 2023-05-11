@@ -11,12 +11,13 @@ struct IdentifyView: View {
     var body: some View {
         VStack{
             Image(systemName: "camera")
-            Text("Identify View")
+            Text("Identitfy View")
         }
-        
     }
-    
+
 }
+
+
 struct IdentifyView_Previews: PreviewProvider {
     static var previews: some View {
         IdentifyView()

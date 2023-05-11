@@ -40,14 +40,13 @@ struct MainView: View {
                         .padding(.all, 15.0)
                         .frame(width: 300.0)
                         .foregroundColor(.black)
-                        .background(Color(uiColor: UIColor(red: 0.98, green: 1.00, blue: 0.00, alpha: 1.00)))
+                        .background(.orange)
                         .cornerRadius(/*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
                         .scenePadding(.horizontal)
                         
                 }
             }
             .padding(.horizontal, 22)
-            .preferredColorScheme(/*@START_MENU_TOKEN@*/ .dark/*@END_MENU_TOKEN@*/)
             
         }
     }

@@ -45,10 +45,9 @@ struct ContentView: View {
                 }
                 .tag(3)
         }
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(.light)
         .ignoresSafeArea()
-        .accentColor(/*@START_MENU_TOKEN@*/Color(red: 0.981, green: 1.001, blue: -0.002)/*@END_MENU_TOKEN@*/)
-        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        .accentColor(.orange)
         
     }
     
