@@ -8,195 +8,92 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    let imageList = [
+        Image("food1"),
+        Image("food2"),
+        Image("food3")
+    ]
+    let imageList2 = [
+        Recipe(name: "Spaghetti Bolognese",
+                              description: "A classic Italian pasta dish with rich and flavorful Bolognese sauce.",
+                              images: ["food1", "food2", "food3"],
+                              preparation: "Cook the spaghetti according to package instructions. Prepare the Bolognese sauce by cooking ground beef, onion, garlic, tomatoes, and spices. Mix the sauce with the cooked pasta and serve with grated Parmesan cheese."),
+                       Recipe(name: "Chicken Caesar Salad",
+                              description: "A fresh and healthy salad with grilled chicken, lettuce, and Caesar dressing.",
+                              images: ["food2", "food3"],
+                              preparation: "Grill the chicken breasts until cooked through. In a large bowl, toss together lettuce, croutons, and Caesar dressing. Top the salad with the grilled chicken and shaved Parmesan cheese."),
+                       Recipe(name: "Tacos",
+                              description: "Delicious Mexican tacos filled with seasoned meat, fresh vegetables, and cheese.",
+                              images: ["food1", "food2", "food3"],
+                              preparation: "Cook the meat with taco seasoning. Warm the tortillas and fill them with the cooked meat, diced tomatoes, shredded lettuce, and grated cheese. Top with sour cream and salsa."),
+                       Recipe(name: "Sushi",
+                              description: "A variety of sushi rolls made with fresh seafood, rice, and vegetables.",
+                              images: ["food3"],
+                              preparation: "Prepare sushi rice by cooking and seasoning it. Slice the seafood and vegetables into thin strips. Place a sheet of nori on a bamboo sushi mat, then spread a layer of sushi rice on the nori. Add the seafood and vegetables in a line, then roll the sushi tightly using the bamboo mat. Cut the roll into bite-sized pieces."),
+                       Recipe(name: "Cheesecake",
+                              description: "A creamy and delicious cheesecake with a graham cracker crust.",
+                              images: ["food2", "food3"],
+                              preparation: "Mix together graham cracker crumbs, sugar, and melted butter to form the crust. Press the crust into the bottom of a springform pan. Beat together cream cheese, sugar, and eggs to make the cheesecake filling, then pour it over the crust. Bake the cheesecake at 325°F for 50-60 minutes, then chill before serving.")
+    ]
+    @State private var currentIndex: Int = 0
+    let activeColor: Color = .blue
+    let inactiveColor: Color = .gray
+
     var body: some View {
-        ScrollView {
+        ZStack {
+            imageList[currentIndex]
+                .resizable()
+                .scaledToFit()
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                .clipped()
+
+            VStack {
+                
+                indicatorBar
+                    .padding(.bottom, 10)
+            }.offset( y: 235)
+
             HStack {
-                // logo
-                Image("logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.leading)
-                    .frame(width: 130.0)
-                Spacer()
-            }
-            .padding(.bottom)
-            VStack{
-                VStack {
-                    // Headlines
-                    Text("FAQs")
-                        .font(.custom("MontserratRoman-Bold", size: 36))
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.leading)
-                    
-                    // subhead
-                    Text("The most frequently asked questions")
-                        .font(.custom("MontserratRoman-Regular", size: 22))
-                        .foregroundColor(Color(hue: 0.173, saturation: 0.888, brightness: 0.855))
-                        .multilineTextAlignment(.center)
-                        .padding(.bottom, 40.0)
-                }.padding(.bottom)
-                // Questions
-                VStack {
-                    Group {
-                        //Question1
-                        HStack {
-                            Text("What is your name?")
-                                .font(.custom("MontserratRoman-SemiBold", size: 28))
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 1)
-                                .foregroundColor(Color(hue: 0.173, saturation: 0.888, brightness: 0.855))
-                            Spacer()
-                        }
-                        HStack {
-                            Text("I am Asadbek Nematov.")
-                                .font(.custom("MontserratRoman-Regular", size: 16))
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 28)
-                            Spacer()
-                        }
-                        //Question2
-                        HStack {
-                            Text("Where are you from?")
-                                .font(.custom("MontserratRoman-SemiBold", size: 28))
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 1)
-                                .foregroundColor(Color(hue: 0.173, saturation: 0.888, brightness: 0.855))
-                            Spacer()
-                        }
-                        HStack {
-                            Text("I am from Tashkent, Uzbekistan, but currently live in Tampa, Florida.")
-                                .font(.custom("MontserratRoman-Regular", size: 16))
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 28)
-                            Spacer()
-                        }
-                        //Question3
-                        HStack {
-                            Text("How old are you?")
-                                .font(.custom("MontserratRoman-SemiBold", size: 28))
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 1)
-                                .foregroundColor(Color(hue: 0.173, saturation: 0.888, brightness: 0.855))
-                            Spacer()
-                        }
-                        HStack {
-                            Text("I was born on September 29, 2003. Now I am 19 years old.")
-                                .font(.custom("MontserratRoman-Regular", size: 16))
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 28)
-                            Spacer()
-                        }
-                        //Question4
-                        HStack {
-                            Text("Where do you study?")
-                                .font(.custom("MontserratRoman-SemiBold", size: 28))
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 1)
-                                .foregroundColor(Color(hue: 0.173, saturation: 0.888, brightness: 0.855))
-                            Spacer()
-                        }
-                        HStack {
-                            Text("I study at the University of South Florida in Bachelor of Computer Science.")
-                                .font(.custom("MontserratRoman-Regular", size: 16))
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 30)
-                            Spacer()
-                        }
-                        //Question5
-                        HStack {
-                            Text("Are you an iOS or web developer?")
-                                .font(.custom("MontserratRoman-SemiBold", size: 28))
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 1)
-                                .foregroundColor(Color(hue: 0.173, saturation: 0.888, brightness: 0.855))
-                            Spacer()
-                        }
-                        HStack {
-                            Text("My career began in web development. I switched to iOS development after more than a year of working in this field. I can therefore claim to be an iOS developer with a background in web development. ")
-                                .font(.custom("MontserratRoman-Regular", size: 16))
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 30)
-                            Spacer()
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        if currentIndex > 0 {
+                            currentIndex -= 1
+                        } else {
+                            currentIndex = imageList.count - 1
                         }
                     }
-                    Group {
-                        //Question6
-                        HStack {
-                            Text("Where did you learn Frontend and iOS development?")
-                                .font(.custom("MontserratRoman-SemiBold", size: 28))
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 1)
-                                .foregroundColor(Color(hue: 0.173, saturation: 0.888, brightness: 0.855))
-                            Spacer()
+
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        if currentIndex < imageList.count - 1 {
+                            currentIndex += 1
+                        } else {
+                            currentIndex = 0
                         }
-                        HStack {
-                            Text("I learned them mostly from YouTube and other sources. I also follow some developers from Uzbekistan and around the world on social media.")
-                                .font(.custom("MontserratRoman-Regular", size: 16))
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 30)
-                            Spacer()
-                        }
-                        //Question7
-                        HStack {
-                            Text("Why did you choose the IT sphere?")
-                                .font(.custom("MontserratRoman-SemiBold", size: 28))
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 1)                                .foregroundColor(Color(hue: 0.173, saturation: 0.888, brightness: 0.855))
-                            Spacer()
-                        }
-                        HStack {
-                            Text("Because I do enjoy programming. I can only truly be myself when I'm coding. Coding makes me connect with the universe. I also think that success in a profession comes from a person doing what they love.")
-                                .font(.custom("MontserratRoman-Regular", size: 16))
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 30)
-                            Spacer()
-                        }
-                        //Question8
-                        HStack {
-                            Text("How can we contact you?")
-                                .font(.custom("MontserratRoman-SemiBold", size: 28))
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom, 1)
-                                .foregroundColor(Color(hue: 0.173, saturation: 0.888, brightness: 0.855))
-                            Spacer()
-                        }
-                        HStack {
-                            Text("You can contact me via any social media that I left on the home page, or send me an email at asadbekn443@gmail.com. Do not hesitate to reach out!")
-                                .font(.custom("MontserratRoman-Regular", size: 16))
-                                .multilineTextAlignment(.leading)
-                                .padding(.bottom)
-                            Spacer()
-                        }.padding(.bottom, 50.0)
                     }
-                }.padding(.bottom, 50)
-                // Questions end
             }
-            .padding(.horizontal, 30)
-            .preferredColorScheme(/*@START_MENU_TOKEN@*/ .dark/*@END_MENU_TOKEN@*/)
-            .scrollIndicators(/*@START_MENU_TOKEN@*/ .hidden/*@END_MENU_TOKEN@*/, axes: /*@START_MENU_TOKEN@*/[.vertical, .horizontal]/*@END_MENU_TOKEN@*/)
-            .scrollContentBackground(/*@START_MENU_TOKEN@*/ .automatic/*@END_MENU_TOKEN@*/)
+        }.frame(width: 380, height: 500, alignment: .center)
+        .cornerRadius(10)
+    }
+
+    private var indicatorBar: some View {
+        HStack(spacing: 8) {
+            ForEach(imageList.indices, id: \.self) { index in
+                Circle()
+                    .fill(index == currentIndex ? activeColor : inactiveColor)
+                    .frame(width: 8, height: 8)
+                    .animation(.easeInOut(duration: 0.3), value: currentIndex)
+            }
         }
-        .scrollIndicators(/*@START_MENU_TOKEN@*/ .hidden/*@END_MENU_TOKEN@*/, axes: /*@START_MENU_TOKEN@*/[.vertical, .horizontal]/*@END_MENU_TOKEN@*/)
     }
 }
+
 
 struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {

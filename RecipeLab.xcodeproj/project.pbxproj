@@ -20,10 +20,10 @@
 		F76704F22A0AC50200E89ED6 /* LoremPicsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76704EE2A0AC50200E89ED6 /* LoremPicsum.swift */; };
 		F76704F52A0AC61200E89ED6 /* LoremSwiftum in Frameworks */ = {isa = PBXBuildFile; productRef = F76704F42A0AC61200E89ED6 /* LoremSwiftum */; };
 		F76704F72A0B1D5300E89ED6 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76704F62A0B1D5300E89ED6 /* ExploreView.swift */; };
+		F76704FA2A0C57C900E89ED6 /* ExploreView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76704F92A0C57C900E89ED6 /* ExploreView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F72B5A352A0AAAE60049B3E3 /* RecipeLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = RecipeLab.app; path = "/Users/asadbeknematov/Desktop/Projects/RecipeLab_v2.0/build/Debug-iphoneos/RecipeLab.app"; sourceTree = "<absolute>"; };
 		F72B5A382A0AAAE60049B3E3 /* RecipeLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLabApp.swift; sourceTree = "<group>"; };
 		F72B5A3A2A0AAAE60049B3E3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F72B5A3C2A0AAAE80049B3E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,6 +36,8 @@
 		F76704ED2A0AC50200E89ED6 /* MediaCredits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCredits.swift; sourceTree = "<group>"; };
 		F76704EE2A0AC50200E89ED6 /* LoremPicsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremPicsum.swift; sourceTree = "<group>"; };
 		F76704F62A0B1D5300E89ED6 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		F76704F82A0B38F700E89ED6 /* RecipeLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F76704F92A0C57C900E89ED6 /* ExploreView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				F72B5A372A0AAAE60049B3E3 /* RecipeLab */,
 				F76704F32A0AC61200E89ED6 /* Frameworks */,
+				F76704F82A0B38F700E89ED6 /* RecipeLab.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				F76704F62A0B1D5300E89ED6 /* ExploreView.swift */,
+				F76704F92A0C57C900E89ED6 /* ExploreView2.swift */,
 				F72B5A5C2A0AAE050049B3E3 /* MainView.swift */,
 				F72B5A602A0AAE350049B3E3 /* FavoritesVIew.swift */,
 				F72B5A5A2A0AADE70049B3E3 /* IdentifyView.swift */,
@@ -128,7 +132,7 @@
 				F76704F42A0AC61200E89ED6 /* LoremSwiftum */,
 			);
 			productName = RecipeLab;
-			productReference = F72B5A352A0AAAE60049B3E3 /* RecipeLab.app */;
+			productReference = F76704F82A0B38F700E89ED6 /* RecipeLab.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -186,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F72B5A5D2A0AAE050049B3E3 /* MainView.swift in Sources */,
+				F76704FA2A0C57C900E89ED6 /* ExploreView2.swift in Sources */,
 				F76704F72A0B1D5300E89ED6 /* ExploreView.swift in Sources */,
 				F72B5A3B2A0AAAE60049B3E3 /* ContentView.swift in Sources */,
 				F76704F02A0AC50200E89ED6 /* LoremIpsum.swift in Sources */,
