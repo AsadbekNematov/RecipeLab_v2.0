@@ -20,7 +20,51 @@ struct ExploreView: View {
 
             // Create the card stack view
             CardStackView<RecipeCardView>(cards: createCardViews(), cardAction: cardAction, loopCards: true)
-                .offset(y:-20)
+                .offset(y:-15)
+            // Add action buttons
+                       HStack {
+                           Button(action: {
+                               // Action for Nope/Left (Red X)
+                               print("Nope/Left action performed")
+                           }) {
+                               Image(systemName: "xmark") // replace "redX" with your actual image name
+                                   .font(.system(size: 30)) // size of the
+                                   .foregroundColor(.red) // color of the
+                                   .padding() // padding around the
+                                   .overlay( // border around the
+                                       Circle()
+                                           .stroke(Color.red, lineWidth: 1)
+                                   )
+                           }.padding(.horizontal)
+                           Button(action: {
+                               // Action for Rewind (Yellow arrow)
+                               print("Rewind action performed")
+                           }) {
+                               Image(systemName: "arrow.counterclockwise") // replace "yellowArrow" with your actual image name
+                                   .font(.system(size: 20)) // size of the
+                                   .foregroundColor(.yellow) // color of the
+                                   .padding() // padding around the
+                                   .overlay( // border around the
+                                       Circle()
+                                           .stroke(Color.yellow, lineWidth: 1)
+                                   )
+                           }
+                           Button(action: {
+                               // Action for Like/Right (Green heart)
+                               print("Like/Right action performed")
+                           }) {
+                               Image(systemName: "heart.fill") // replace "greenHeart" with your actual image name
+                                   .font(.system(size: 30)) // size of the
+                                   .foregroundColor(.green) // color of the
+                                   .padding() // padding around the
+                                   .overlay( // border around the
+                                       Circle()
+                                           .stroke(Color.green, lineWidth: 1)
+                                   )
+                           }.padding(.horizontal)
+                       }
+                      // .padding(.top, 20) // add some padding at the top of the action buttons
+
             Spacer()
         }
         .padding()
@@ -57,7 +101,7 @@ struct RecipeCardView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit) .overlay(
                     LinearGradient(
-                        gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(1)]),
+                        gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(1.5)]),
                         startPoint: .center,
                         endPoint: .bottom)
                         .edgesIgnoringSafeArea(.all)
@@ -73,12 +117,11 @@ struct RecipeCardView: View {
                         .font(.title)
                         .foregroundColor(.white)
                         .bold()
-                        .padding()
                     Text(recipe.description)
                         .font(.body)
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
-                }.offset(y:200)
+                }.offset(y:160)
                     .padding(.horizontal, 20)
             }
             
