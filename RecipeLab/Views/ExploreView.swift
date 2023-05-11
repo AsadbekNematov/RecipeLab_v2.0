@@ -35,13 +35,13 @@ struct ExploreView: View {
                                        Circle()
                                            .stroke(Color.red, lineWidth: 1)
                                    )
-                           }.padding(.horizontal)
+                           }.padding(.horizontal, 10)
                            Button(action: {
                                // Action for Rewind (Yellow arrow)
                                print("Rewind action performed")
                            }) {
                                Image(systemName: "arrow.counterclockwise") // replace "yellowArrow" with your actual image name
-                                   .font(.system(size: 20)) // size of the
+                                   .font(.system(size: 15)) // size of the
                                    .foregroundColor(.yellow) // color of the
                                    .padding() // padding around the
                                    .overlay( // border around the
@@ -61,7 +61,7 @@ struct ExploreView: View {
                                        Circle()
                                            .stroke(Color.green, lineWidth: 1)
                                    )
-                           }.padding(.horizontal)
+                           }.padding(.horizontal, 10)
                        }
                       // .padding(.top, 20) // add some padding at the top of the action buttons
 
