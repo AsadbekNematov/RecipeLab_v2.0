@@ -18,7 +18,7 @@ public struct CardSwipeView<Content: View>: View {
     // MARK: - Properties
     
     @State public var offset = CGSize.zero
-    @State public var color: Color = .black
+    @State public var color: Color = .clear
     @State public var isRemoved = false
     public var onCardRemoved: (() -> Void)?
     public var onCardAdded: (() -> Void)?
@@ -38,6 +38,11 @@ public struct CardSwipeView<Content: View>: View {
         ZStack {
             content()
                 .frame(width: 320, height: 420)
+            Rectangle()
+                .foregroundColor(color.opacity(0.5)) // adjust opacity as needed
+            
+                .cornerRadius(10)
+                .frame(width: 380,height: 600)
             
         }
         .offset(x: offset.width * 1, y: offset.height * 0.4)
@@ -80,12 +85,14 @@ public struct CardSwipeView<Content: View>: View {
     
     public func updateCardColor(width: CGFloat) {
         switch width {
-        case -500...(-130):
+        case -500...(-10):
             color = .red
-        case 130...500:
+        case 10...500:
             color = .green
         default:
-            color = .black
+            color = .clear
+            
+            
         }
     }
 }
@@ -159,7 +166,7 @@ public struct CardStackView<Content: View>: View {
         card
             .animation(.spring())
             .zIndex(Double(cards.count))
-           .offset(x: 0, y: 0)
+            .offset(x: 0, y: 0)
             .rotationEffect(.degrees(Double((currentIndex == 0 ? 0 : currentIndex - 1) * 2)))
             .gesture(
                 DragGesture()
@@ -189,11 +196,11 @@ public struct CardStackView<Content: View>: View {
     private func upcomingCardView(card: CardSwipeView<Content>, index: Int) -> some View {
         let isRemoving = currentIndex > index
         let yOffset = isRemoving ? 10 : 10 + CGFloat(index - currentIndex) * 10
-         return withAnimation(.spring()) {
+        return withAnimation(.spring()) {
             card
-              .zIndex(Double(cards.count - index))
-             // .offset(x: 0, y: yOffset)
-               //.rotationEffect(.degrees(Double((currentIndex - index) * 2)))
+                .zIndex(Double(cards.count - index))
+            // .offset(x: 0, y: yOffset)
+            //.rotationEffect(.degrees(Double((currentIndex - index) * 2)))
         }
     }
     
@@ -204,5 +211,5 @@ public struct CardStackView<Content: View>: View {
             .offset(x: 0, y: offset)
             .rotationEffect(.degrees(Double((index - currentIndex) * 2)))
             .opacity(0)
-            .animation(.spring(), value: currentIndex)    }
+        .animation(.spring(), value: currentIndex)    }
 }
