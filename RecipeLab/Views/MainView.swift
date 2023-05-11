@@ -9,43 +9,32 @@ import SwiftUI
 import LoremSwiftum
 
 struct MainView: View {
-    @Environment(\.openURL) var openURL
     @Binding var selection: Int
 
     var body: some View {
         ScrollView {
-            HStack {
-                // logo
-                Image("logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.leading)
-                    .frame(width: 130.0)
-                    .padding(.horizontal, 27)
-                Spacer()
-            }
-            .padding(.bottom)
                 Spacer()
             VStack{
                 Spacer()
                 VStack {
                     // headtext
-                    
+                    Spacer()
                     Text("Welcome!")
                         .font(.custom("MontserratRoman-SemiBold", size: 35))
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .padding(.bottom)
-                    // text
                     
                     Text(Lorem.words(10))
                         .font(.custom("MontserratRoman-Regular", size: 16))
                         .foregroundColor(Color(uiColor: UIColor(red: 0.67, green: 0.67, blue: 0.67, alpha: 1.00)))
                         .padding(.bottom)
                     
-                        Button("Portfolio") {
+                        Button() {
                             selection = 1
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                            Text("Idenitfy")
                         }
                         .font(.custom("MontserratRoman-Regular", size: 16))
                         .padding(.all, 15.0)
@@ -56,12 +45,10 @@ struct MainView: View {
                         .scenePadding(.horizontal)
                         
                 }
-                Spacer()
             }
             .padding(.horizontal, 22)
             .preferredColorScheme(/*@START_MENU_TOKEN@*/ .dark/*@END_MENU_TOKEN@*/)
             
-                Spacer()
         }
     }
 }
