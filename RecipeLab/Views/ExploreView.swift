@@ -21,7 +21,7 @@ struct ExploreView: View {
             
             // Create the card stack view
             CardStackView<RecipeCardView>(cards: createCardViews(), cardAction: cardAction, loopCards: true)
-                .offset(y:-15)
+                .offset(y:-1)
             // Add action buttons
             HStack {
                 Button(action: {
@@ -64,7 +64,7 @@ struct ExploreView: View {
                         )
                 }.padding(.horizontal, 10)
             }
-            .offset(y:-93)
+            .offset(y:-78)
             Spacer()
         }
         .padding()

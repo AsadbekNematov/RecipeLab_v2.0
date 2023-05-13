@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct IdentifyView: View {
+    
     var body: some View {
-        VStack{
-            Image(systemName: "camera")
-            Text("Identitfy View")
+        HStack{
+            
+            Text("IdentifyView")
+            Image(systemName: "camera.fill")
         }
     }
-
 }
-
 
 struct IdentifyView_Previews: PreviewProvider {
     static var previews: some View {
