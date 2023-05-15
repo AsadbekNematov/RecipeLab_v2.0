@@ -195,7 +195,7 @@ public struct CardStackView<Content: View>: View {
     
     private func upcomingCardView(card: CardSwipeView<Content>, index: Int) -> some View {
         let isRemoving = currentIndex > index
-        let yOffset = isRemoving ? 10 : 10 + CGFloat(index - currentIndex) * 10
+        _ = isRemoving ? 10 : 10 + CGFloat(index - currentIndex) * 10
         return withAnimation(.spring()) {
             card
                 .zIndex(Double(cards.count - index))

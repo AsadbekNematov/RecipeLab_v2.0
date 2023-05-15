@@ -39,12 +39,16 @@ struct IdentifyView: View {
             HStack{
                 
                 // Search bar
+                Image(systemName: "magnifyingglass").foregroundColor(.gray)
+                
                 TextField("Search Ingredient", text: $searchText)
-                    .padding()
                     .onChange(of: searchText, perform: loadIngredients)
-            }.textFieldStyle(OvalTextFieldStyle())
+            }                    .textFieldStyle(OvalTextFieldStyle())
+            
+            
+                .padding()
             Spacer()
-
+            
             
             // Display search results
             if !searchResults.isEmpty {
@@ -74,7 +78,7 @@ struct IdentifyView: View {
                             URLImage(url: "https://spoonacular.com/cdn/ingredients_100x100/\(ingredientList[index].image)")
                             Text(ingredientList[index].name.capitalized)
                                 .textInputAutocapitalization(.sentences)
-
+                            
                             Spacer()
                             Button(action: {
                                 ingredientList.remove(at: index)
@@ -98,7 +102,7 @@ struct IdentifyView: View {
         }
     }
     func loadIngredients(_ searchText: String) {
-        let url = URL(string: "https://api.spoonacular.com/food/ingredients/search?query=\(searchText)&number=10&apiKey=1b809c8a96944eaa8ccda2daec5bd47a")!
+        let url = URL(string: "https://api.spoonaculaar.com/food/ingredients/search?query=\(searchText)&number=10&apiKey=e51d14bc19d6447d8c63c52f7a62e9e1")!
         
         URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
