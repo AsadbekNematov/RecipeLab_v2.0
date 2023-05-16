@@ -30,13 +30,13 @@ struct ContentView: View {
                         .font(.custom("MontserratRoman-Regular", size: 18))
                 }
                 .tag(1)
-//            ExploreView()
-//                .tabItem {
-//                    Image(systemName: "magnifyingglass.circle.fill")
-//                    Text("Explore")
-//                        .font(.custom("MontserratRoman-Regular", size: 18))
-//                }
-//                .tag(2)
+            ExploreView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass.circle.fill")
+                    Text("Explore")
+                        .font(.custom("MontserratRoman-Regular", size: 18))
+                }
+                .tag(2)
             FavoritesView()
                 .tabItem {
                     Image(systemName: "heart.fill")
