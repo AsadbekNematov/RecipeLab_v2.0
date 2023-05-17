@@ -11,6 +11,14 @@ import Combine
 struct IngredientResponse: Decodable {
     let results: [Ingredient]
 }
+// Recipe model to match API response
+struct RecipeResponse: Decodable, Identifiable {
+    let id: Int
+    let title: String
+    let image: String
+    let missedIngredients: [Ingredient]
+}
+
 
 struct Ingredient: Identifiable, Decodable {
     let id: Int
@@ -33,6 +41,10 @@ struct IdentifyView: View {
     @State private var searchResults = [Ingredient]()
     @State private var ingredientList = [Ingredient]()
     @State private var cancellables = Set<AnyCancellable>()
+    @State private var recipeResults = [RecipeResponse]()
+    @State private var showingRecipesPopup = false
+
+
     
     var body: some View {
         VStack {
@@ -92,8 +104,48 @@ struct IdentifyView: View {
                     .onDelete(perform: deleteIngredient)
                 }
             }
+            Button {
+                loadRecipes()
+                showingRecipesPopup = true
+
+                // present the recipes in a pop-up window
+                // I'll leave the UI details up to you
+            } label: {
+                HStack{
+                    Text("Recipes")
+                    Image(systemName: "fork.knife")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                }.padding(.all, 15.0)
+                    .frame(width: 300.0)
+                    .foregroundColor(.black)
+                    .background(.orange)
+                    .cornerRadius(/*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                    .scenePadding(.horizontal)
+            }
+        }.sheet(isPresented: $showingRecipesPopup) {
+            RecipePopupView(recipes: recipeResults)
         }
+
     }
+    
+
+    func loadRecipes() {
+        let ingredientNames = ingredientList.map { $0.name }.joined(separator: ",+")
+        let url = URL(string: "https://api.spoonacular.com/recipes/findByIngredients?ingredients=\(ingredientNames)&number=5&apiKey=e51d14bc19d6447d8c63c52f7a62e9e1")!
+
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .decode(type: [RecipeResponse].self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { response in
+                self.recipeResults = response
+            })
+            .store(in: &cancellables)
+    }
+
     
     // This function should be here, not inside body
     func deleteIngredient(at offsets: IndexSet) {
@@ -102,7 +154,7 @@ struct IdentifyView: View {
         }
     }
     func loadIngredients(_ searchText: String) {
-        let url = URL(string: "https://api.spoonaculaar.com/food/ingredients/search?query=\(searchText)&number=10&apiKey=e51d14bc19d6447d8c63c52f7a62e9e1")!
+        let url = URL(string: "https://api.spoonacular.com/food/ingredients/search?query=\(searchText)&number=10&apiKey=e51d14bc19d6447d8c63c52f7a62e9e1")!
         
         URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
@@ -152,6 +204,27 @@ struct URLImage: View {
                 }
             }
         }.resume()
+    }
+}
+
+struct RecipePopupView: View {
+    let recipes: [RecipeResponse]
+
+    var body: some View {
+        NavigationView {
+            List(recipes) { recipe in
+                VStack(alignment: .leading) {
+                    Text(recipe.title)
+                        .font(.headline)
+                    URLImage(url: recipe.image)
+                    Text("Missing Ingredients:")
+                    ForEach(recipe.missedIngredients) { ingredient in
+                        Text(ingredient.name)
+                    }
+                }
+            }
+            .navigationBarTitle("Recipes", displayMode: .inline)
+        }
     }
 }
 
