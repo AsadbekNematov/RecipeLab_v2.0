@@ -19,7 +19,7 @@ struct MainView: View {
                 VStack {
                     // headtext
                     Spacer()
-                    Text("Welcome!")
+                    Text("Welcom!")
                         .font(.custom("MontserratRoman-SemiBold", size: 35))
                         .font(.largeTitle)
                         .fontWeight(.heavy)
