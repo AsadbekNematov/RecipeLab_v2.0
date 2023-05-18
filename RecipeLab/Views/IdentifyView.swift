@@ -47,25 +47,25 @@ struct IdentifyView: View {
 
 
 
-    
+
     var body: some View {
         NavigationView {
-            
+
             VStack {
                 HStack{
-                    
+
                     // Search bar
                     Image(systemName: "magnifyingglass").foregroundColor(.gray)
-                    
+
                     TextField("Search Ingredient", text: $searchText)
                         .onChange(of: searchText, perform: loadIngredients)
                 }                    .textFieldStyle(OvalTextFieldStyle())
-                
-                
+
+
                     .padding()
                 Spacer()
-                
-                
+
+
                 // Display search results
                 if !searchResults.isEmpty {
                     Text("Search Results:")
@@ -74,7 +74,7 @@ struct IdentifyView: View {
                             URLImage(url: "https://spoonacular.com/cdn/ingredients_100x100/\(ingredient.image)")
                             Text(ingredient.name.capitalized)
                                 .textInputAutocapitalization(.sentences)
-                            
+
                         }
                         .contentShape(Rectangle())
                         .onTapGesture {
@@ -86,7 +86,7 @@ struct IdentifyView: View {
                         }
                     }
                 }
-                
+
                 // Display chosen ingredients
                 if !ingredientList.isEmpty {
                     Text("Your Ingredients:")
@@ -96,11 +96,11 @@ struct IdentifyView: View {
                                 URLImage(url: "https://spoonacular.com/cdn/ingredients_100x100/\(ingredientList[index].image)")
                                 Text(ingredientList[index].name.capitalized)
                                     .textInputAutocapitalization(.sentences)
-                                
+
                                 Spacer()
                                 Button(action: {
                                     ingredientList.remove(at: index)
-                                    
+
                                 }) {
                                     Image(systemName: "trash")
                                 }
@@ -110,7 +110,8 @@ struct IdentifyView: View {
                         .onDelete(perform: deleteIngredient)
                     }
                 }
-              NavigationLink(destination: RecipePopupView(recipes: convertToPopupRecipes(recipeResults))) {
+                //
+                NavigationLink(destination: ExploreView(viewModel: HomeViewModel(recipes: convertToPopupRecipes(recipeResults)))) {
                     HStack{
                         Text("Recipes")
                         Image(systemName: "fork.knife")
@@ -126,8 +127,9 @@ struct IdentifyView: View {
                     .scenePadding(.horizontal)
                 }
             }.sheet(isPresented: $showingRecipesPopup) {
-                RecipePopupView(recipes: convertToPopupRecipes(recipeResults))
+                ExploreView(viewModel: HomeViewModel(recipes: convertToPopupRecipes(recipeResults)))
             }
+
         }
     }
     func convertToPopupRecipes(_ recipes: [RecipeResponse]) -> [PopupRecipe] {
@@ -153,7 +155,7 @@ struct IdentifyView: View {
 
     }
 
-    
+
     // This function should be here, not inside body
     func deleteIngredient(at offsets: IndexSet) {
         withAnimation {
@@ -163,7 +165,7 @@ struct IdentifyView: View {
     func loadIngredients(_ searchText: String) {
         guard let encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         let url = URL(string: "https://api.spoonacular.com/food/ingredients/search?query=\(encodedSearchText)&number=10&apiKey=e51d14bc19d6447d8c63c52f7a62e9e1")!
-        
+
         URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: IngredientResponse.self, decoder: JSONDecoder())
@@ -175,7 +177,37 @@ struct IdentifyView: View {
             .store(in: &cancellables)
     }
 
-    
+
+}
+struct URLImage: View {
+    @State private var uiImage: UIImage? = nil
+    let url: String
+
+    var body: some View {
+        Group {
+            if let image = self.uiImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(50)
+            } else {
+                ProgressView()
+            }
+        }.onAppear(perform: loadImage)
+    }
+    func loadImage() {
+        guard let imageURL = URL(string: url) else {
+            return
+        }
+
+        URLSession.shared.dataTask(with: imageURL) { data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.uiImage = image
+                }
+            }
+        }.resume()
+    }
 }
 
 struct IdentifyView_Previews: PreviewProvider {
@@ -183,7 +215,6 @@ struct IdentifyView_Previews: PreviewProvider {
         IdentifyView()
     }
 }
-
 
 
 //struct RecipePopupView: View {

@@ -30,7 +30,7 @@ struct ContentView: View {
                         .font(.custom("MontserratRoman-Regular", size: 18))
                 }
                 .tag(1)
-            ExploreView()
+            DiscoverView()
                 .tabItem {
                     Image(systemName: "magnifyingglass.circle.fill")
                     Text("Explore")

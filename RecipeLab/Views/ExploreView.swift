@@ -12,29 +12,17 @@ import SwiftUI
 
 struct ExploreView: View {
     
-    @StateObject private var viewModel = HomeViewModel()
-    @State private var isPressed = false
-
+    @ObservedObject var viewModel: HomeViewModel
+    
+    
     var body: some View {
         
         VStack {
+            Text("Discover")
+                .font(.title).fontWeight(.bold)
+                .foregroundColor(.black)
+                .padding()
             
-            Button {
-                
-            } label: {
-                Image("menu")
-                    .resizable()
-                    .renderingMode(.template)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 22, height: 22)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .overlay(
-                Text("Discover")
-                    .font(.title).fontWeight(.bold)
-            )
-            .foregroundColor(.black)
-            .padding()
             
             // MARK: - FavoriteRecipes Stack...
             ZStack {
@@ -57,8 +45,8 @@ struct ExploreView: View {
                 }
                 
             }
-                       
-                       .padding()
+            
+            .padding()
             .padding(.vertical)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
@@ -70,7 +58,7 @@ struct ExploreView: View {
                 } label: {
                     Image(systemName: "xmark") // replace "redX" with your actual image name
                 }.buttonStyle(CustomButtonStyleMark())
-                .padding(.horizontal, 10)
+                    .padding(.horizontal, 10)
                 Button {
                     
                 } label: {
@@ -79,12 +67,12 @@ struct ExploreView: View {
                 
                 
                 Button(action: {
-                           doSwipe(rightSwipe: true)
-                       }) {
-                           Image(systemName: "heart.fill")
-                       }
-                       .buttonStyle(CustomButtonStyleHeart())
-                       .padding(.horizontal, 10)
+                    doSwipe(rightSwipe: true)
+                }) {
+                    Image(systemName: "heart.fill")
+                }
+                .buttonStyle(CustomButtonStyleHeart())
+                .padding(.horizontal, 10)
                 
             } //: HSTACK
             .offset(y:-123)
@@ -157,57 +145,31 @@ struct CustomButtonStyleMark: ButtonStyle {
 //MARK: - End of Trigger design of action buttons
 
 struct FavoriteRecipe: Identifiable {
-    var id = UUID().uuidString
-    var name: String
-    var description: String
-    var images: [String]
-    var preparation: String
-}
-class HomeViewModel: ObservableObject {
-    @Published var fetchedRecipes: [FavoriteRecipe] = []
-    @Published var displayingRecipes: [FavoriteRecipe]?
-    
-    
-    init() {
-        // MARK: - FavoriteRecipe
-        
-        fetchedRecipes = [FavoriteRecipe(name: "Spaghetti Bolognese",
-                                         description: "A classic Italian pasta dish with rich and flavorful Bolognese sauce.",
-                                         images: ["food1", "food2", "food3"],
-                                         preparation: "Cook the spaghetti according to package instructions. Prepare the Bolognese sauce by cooking ground beef, onion, garlic, tomatoes, and spices. Mix the sauce with the cooked pasta and serve with grated Parmesan cheese."),
-                          FavoriteRecipe(name: "Chicken Caesar Salad",
-                                         description: "A fresh and healthy salad with grilled chicken, lettuce, and Caesar dressing.",
-                                         images: ["food2", "food3", "food1"],
-                                         preparation: "Grill the chicken breasts until cooked through. In a large bowl, toss together lettuce, croutons, and Caesar dressing. Top the salad with the grilled chicken and shaved Parmesan cheese."),
-                          FavoriteRecipe(name: "Tacos",
-                                         description: "Delicious Mexican tacos filled with seasoned meat, fresh vegetables, and cheese.",
-                                         images: ["food1", "food2", "food3"],
-                                         preparation: "Cook the meat with taco seasoning. Warm the tortillas and fill them with the cooked meat, diced tomatoes, shredded lettuce, and grated cheese. Top with sour cream and salsa."),
-                          FavoriteRecipe(name: "Sushi",
-                                         description: "A variety of sushi rolls made with fresh seafood, rice, and vegetables.",
-                                         images: ["food3","food2", "food1"],
-                                         preparation: "Prepare sushi rice by cooking and seasoning it. Slice the seafood and vegetables into thin strips. Place a sheet of nori on a bamboo sushi mat, then spread a layer of sushi rice on the nori. Add the seafood and vegetables in a line, then roll the sushi tightly using the bamboo mat. Cut the roll into bite-sized pieces."),
-                          FavoriteRecipe(name: "Cheesecake",
-                                         description: "A creamy and delicious cheesecake with a graham cracker crust.",
-                                         images: ["food2", "food3", "food1"],
-                                         preparation: "Mix together graham cracker crumbs, sugar, and melted butter to form the crust. Press the crust into the bottom of a springform pan. Beat together cream cheese, sugar, and eggs to make the cheesecake filling, then pour it over the crust. Bake the cheesecake at 325°F for 50-60 minutes, then chill before serving.")
-                          
-        ]
-        displayingRecipes = fetchedRecipes
-    }
-    
-    func getIndex(recipe: FavoriteRecipe) -> Int {
-        let index = displayingRecipes?.firstIndex(where: {
-            return $0.id == recipe.id
-        }) ?? 0
-        return index
-    }
+    var id: Int  // Changed from UUID
+    var title: String  // Renamed from name for consistency
+    var missedIngredients: [String]
+    var image: String  // Changed from [String]
 }
 
+class HomeViewModel: ObservableObject {
+    @Published var fetchedRecipes: [PopupRecipe] = []
+    @Published var displayingRecipes: [PopupRecipe]?
+    
+    init(recipes: [PopupRecipe]) {
+        self.fetchedRecipes = recipes
+        self.displayingRecipes = fetchedRecipes
+    }
+}
+struct PopupRecipe: Identifiable, Decodable {
+    let id: Int
+    let title: String
+    let image: String
+    let missedIngredients: [Ingredient]
+}
 struct StackCardView: View {
     
     @EnvironmentObject private var viewModel: HomeViewModel
-    let recipe: FavoriteRecipe
+    let recipe: PopupRecipe
     
     // MARK: - Gesture Properties...
     @State var offset: CGFloat = 0
@@ -225,177 +187,179 @@ struct StackCardView: View {
             let size = proxy.size
             ZStack {
                 HStack{
-                    Image(recipe.images[currentIndex])
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .overlay(
-                            LinearGradient(
-                                gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(1.5)]),
-                                startPoint: .center,
-                                endPoint: .bottom)
-                        )
+                    URLImage(url: recipe.image)
                 }
                 .cornerRadius(15)
                 .padding(.horizontal, 10)
                 
                 VStack {
-                    indicatorBar
-                        .padding(.bottom, 10)
-                        .offset(y:-210)
+                    //                    indicatorBar
+                    //                        .padding(.bottom, 10)
+                    //                        .offset(y:-210)
                     VStack{
                         
-                        Text(recipe.name)
+                        Text(recipe.title)
                             .font(.title)
                             .foregroundColor(.white)
                             .bold()
-                        Text(recipe.description)
-                            .font(.body)
-                            .foregroundColor(.white)
-                            .fontWeight(.semibold)
+                        ForEach(recipe.missedIngredients, id: \.id) { ingredient in
+                            Text(ingredient.name)
+                                .font(.body)
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                        }
                     }.offset(y:140)
                         .padding(.horizontal, 20)
                 }
                 
-                HStack {
-                    Rectangle()
-                        .fill(Color.clear)
-                        .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            if currentIndex > 0 {
-                                currentIndex -= 1
-                            } else {
-                                currentIndex = recipe.images.count - 1
-                            }
-                        }
-                    
-                    Rectangle()
-                        .fill(Color.clear)
-                        .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            if currentIndex < recipe.images.count - 1 {
-                                currentIndex += 1
-                            } else {
-                                currentIndex = 0
-                            }
-                        }
-                }
-            }
-            .frame(width: size.width, height: size.height)
-            
-            
-            
-        }
-        
-        .offset(x: offset, y: -20)
-        .rotationEffect(.init(degrees: getRotation(angle: 8)))
-        .contentShape(Rectangle().trim(from: 0, to: endSwipe ? 0 : 1))
-        .gesture(
-            DragGesture()
-                .updating($isDragging, body: { value, out, _ in
-                    out = true
-                })
-                .onChanged({ value in
-                    let translation = value.translation.width
-                    offset = (isDragging ? translation : .zero)
-                })
-                .onEnded({ value in
-                    let width = UIScreen.main.bounds.width - 50
-                    let translation = value.translation.width
-                    let checkingStatus = (translation > 0 ? translation : -translation)
-                    withAnimation {
-                        if checkingStatus > (width / 2) {
-                            // remove card....
-                            offset = (translation > 0 ? width : -width) * 2
-                            endSwipeActions()
-                            
-                            if translation > 0 {
-                                rightSwipe()
-                            } else {
-                                leftSwipe()
-                            }
-                        } else {
-                            // reset
-                            offset = .zero
-                        }
-                    }
-                })
-        )
-        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("ACTIONFROMBUTTON"))) { data in
-            guard let info = data.userInfo else { return }
-            let id = info["id"] as? String ?? ""
-            let rightSwipe = info["rightSwipe"] as? Bool ?? false
-            let width = UIScreen.main.bounds.width - 50
-            
-            if recipe.id == id {
+                //                HStack {
+                //                    Rectangle()
+                //                        .fill(Color.clear)
+                //                        .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height)
+                //                        .contentShape(Rectangle())
+                //                        .onTapGesture {
+                //                            if currentIndex > 0 {
+                //                                currentIndex -= 1
+                //                            } else {
+                //                                currentIndex = recipe.images.count - 1
+                //                            }
+                //                        }
+                //
+                //                    Rectangle()
+                //                        .fill(Color.clear)
+                //                        .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height)
+                //                        .contentShape(Rectangle())
+                //                        .onTapGesture {
+                //                            if currentIndex < recipe.images.count - 1 {
+                //                                currentIndex += 1
+                //                            } else {
+                //                                currentIndex = 0
+                //                            }
+                //                        }
+                //                } }
+               }
+                      .frame(width: size.width, height: size.height)
                 
-                // removing card...
-                withAnimation {
-                    offset = (rightSwipe ? width : -width) * 2
-                    endSwipeActions()
-                    
-                    if rightSwipe {
-                        self.rightSwipe()
-                    } else {
-                        leftSwipe()
+                
+                
+            }
+            
+            .offset(x: offset, y: -20)
+            .rotationEffect(.init(degrees: getRotation(angle: 8)))
+            .contentShape(Rectangle().trim(from: 0, to: endSwipe ? 0 : 1))
+            .gesture(
+                DragGesture()
+                    .updating($isDragging, body: { value, out, _ in
+                        out = true
+                    })
+                    .onChanged({ value in
+                        let translation = value.translation.width
+                        offset = (isDragging ? translation : .zero)
+                    })
+                    .onEnded({ value in
+                        let width = UIScreen.main.bounds.width - 50
+                        let translation = value.translation.width
+                        let checkingStatus = (translation > 0 ? translation : -translation)
+                        withAnimation {
+                            if checkingStatus > (width / 2) {
+                                // remove card....
+                                offset = (translation > 0 ? width : -width) * 2
+                                endSwipeActions()
+                                
+                                if translation > 0 {
+                                    rightSwipe()
+                                } else {
+                                    leftSwipe()
+                                }
+                            } else {
+                                // reset
+                                offset = .zero
+                            }
+                        }
+                    })
+            )
+//            .onReceive(NotificationCenter.default.publisher(for: Notification.Name("ACTIONFROMBUTTON"))) { data in
+//                guard let info = data.userInfo else { return }
+//                let id = info["id"] as? String ?? ""
+//                let rightSwipe = info["rightSwipe"] as? Bool ?? false
+//                let width = UIScreen.main.bounds.width - 50
+//                
+//                if recipe.id == id {
+//                    
+//                    // removing card...
+//                    withAnimation {
+//                        offset = (rightSwipe ? width : -width) * 2
+//                        endSwipeActions()
+//                        
+//                        if rightSwipe {
+//                            self.rightSwipe()
+//                        } else {
+//                            leftSwipe()
+//                        }
+//                    }
+//                }
+//                
+//            }
+            
+        }
+        
+        
+        //    private var indicatorBar: some View {
+        //        HStack(spacing: 8) {
+        //            ForEach(recipe.images.indices, id: \.self) { index in
+        //                Circle()
+        //                    .fill(index == currentIndex ? activeColor : inactiveColor)
+        //                    .frame(width: 8, height: 8)
+        //                    .animation(.easeInOut(duration: 0.3), value: currentIndex)
+        //            }
+        //        }
+        //    }
+        // Rotation
+        private func getRotation(angle: Double) -> Double {
+            let rotation = (offset / (UIScreen.main.bounds.width - 50)) * angle
+            return rotation
+        }
+        
+        private func endSwipeActions() {
+            withAnimation(.none) {
+                endSwipe = true
+                // after the card is moved away removing the card from array to preserve the memory...
+                
+                // The delay time based on your animation duration...
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if let _ = viewModel.displayingRecipes?.first {
+                        _ = withAnimation {
+                            viewModel.displayingRecipes?.removeFirst()
+                        }
                     }
                 }
             }
-            
+        }
+        private func leftSwipe() {
+            // DO ACTIONS HERE
+            print("Left Swiped")
+        }
+        
+        private func rightSwipe() {
+            // DO ACTIONS HERE
+            print("Right Swiped")
         }
         
     }
     
     
-    private var indicatorBar: some View {
-        HStack(spacing: 8) {
-            ForEach(recipe.images.indices, id: \.self) { index in
-                Circle()
-                    .fill(index == currentIndex ? activeColor : inactiveColor)
-                    .frame(width: 8, height: 8)
-                    .animation(.easeInOut(duration: 0.3), value: currentIndex)
-            }
-        }
-    }
-    // Rotation
-    private func getRotation(angle: Double) -> Double {
-        let rotation = (offset / (UIScreen.main.bounds.width - 50)) * angle
-        return rotation
-    }
     
-    private func endSwipeActions() {
-        withAnimation(.none) {
-            endSwipe = true
-            // after the card is moved away removing the card from array to preserve the memory...
-            
-            // The delay time based on your animation duration...
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                if let _ = viewModel.displayingRecipes?.first {
-                    _ = withAnimation {
-                        viewModel.displayingRecipes?.removeFirst()
-                    }
-                }
-            }
-        }
-    }
-    private func leftSwipe() {
-        // DO ACTIONS HERE
-        print("Left Swiped")
-    }
-    
-    private func rightSwipe() {
-        // DO ACTIONS HERE
-        print("Right Swiped")
-    }
-    
-}
-
-
-
 
 struct ExploreView_Previews: PreviewProvider {
     static var previews: some View {
-        ExploreView()
+        ExploreView(viewModel: HomeViewModel(recipes: [
+            PopupRecipe(id: 1, title: "Test Recipe", image: "https://via.placeholder.com/150", missedIngredients: [
+                Ingredient(id: 1, name: "Test Ingredient 1", image: "https://via.placeholder.com/150"),
+                Ingredient(id: 2, name: "Test Ingredient 2", image: "https://via.placeholder.com/150")
+            ]),
+            PopupRecipe(id: 2, title: "Another Test Recipe", image: "https://via.placeholder.com/150", missedIngredients: [
+                Ingredient(id: 3, name: "Test Ingredient 3", image: "https://via.placeholder.com/150")
+            ])
+        ]))
     }
 }

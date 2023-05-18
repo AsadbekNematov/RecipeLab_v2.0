@@ -21,6 +21,7 @@
 		F78C439E2A0CDDD6001A0C5B /* FavoritesVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B5A602A0AAE350049B3E3 /* FavoritesVIew.swift */; };
 		F78C43B62A13199A001A0C5B /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C43AD2A13199A001A0C5B /* ExploreView.swift */; };
 		F78C43C12A14B6EE001A0C5B /* RecipePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C43C02A14B6EE001A0C5B /* RecipePopupView.swift */; };
+		F78C43CE2A16362C001A0C5B /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C43CD2A16362C001A0C5B /* DiscoverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		F76704F82A0B38F700E89ED6 /* RecipeLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78C43AD2A13199A001A0C5B /* ExploreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		F78C43C02A14B6EE001A0C5B /* RecipePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopupView.swift; sourceTree = "<group>"; };
+		F78C43CD2A16362C001A0C5B /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				F78C43AD2A13199A001A0C5B /* ExploreView.swift */,
 				F72B5A5C2A0AAE050049B3E3 /* MainView.swift */,
+				F78C43CD2A16362C001A0C5B /* DiscoverView.swift */,
 				F72B5A602A0AAE350049B3E3 /* FavoritesVIew.swift */,
 				F72B5A5A2A0AADE70049B3E3 /* IdentifyView.swift */,
 				F78C43C02A14B6EE001A0C5B /* RecipePopupView.swift */,
@@ -195,6 +198,7 @@
 				F76704F02A0AC50200E89ED6 /* LoremIpsum.swift in Sources */,
 				F78C439E2A0CDDD6001A0C5B /* FavoritesVIew.swift in Sources */,
 				F76704F12A0AC50200E89ED6 /* MediaCredits.swift in Sources */,
+				F78C43CE2A16362C001A0C5B /* DiscoverView.swift in Sources */,
 				F72B5A5B2A0AADE70049B3E3 /* IdentifyView.swift in Sources */,
 				F72B5A392A0AAAE60049B3E3 /* RecipeLabApp.swift in Sources */,
 				F76704F22A0AC50200E89ED6 /* LoremPicsum.swift in Sources */,
