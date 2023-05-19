@@ -20,7 +20,6 @@
 		F76704F52A0AC61200E89ED6 /* LoremSwiftum in Frameworks */ = {isa = PBXBuildFile; productRef = F76704F42A0AC61200E89ED6 /* LoremSwiftum */; };
 		F78C439E2A0CDDD6001A0C5B /* FavoritesVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B5A602A0AAE350049B3E3 /* FavoritesVIew.swift */; };
 		F78C43B62A13199A001A0C5B /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C43AD2A13199A001A0C5B /* ExploreView.swift */; };
-		F78C43C12A14B6EE001A0C5B /* RecipePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C43C02A14B6EE001A0C5B /* RecipePopupView.swift */; };
 		F78C43CE2A16362C001A0C5B /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78C43CD2A16362C001A0C5B /* DiscoverView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +37,6 @@
 		F76704EE2A0AC50200E89ED6 /* LoremPicsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremPicsum.swift; sourceTree = "<group>"; };
 		F76704F82A0B38F700E89ED6 /* RecipeLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78C43AD2A13199A001A0C5B /* ExploreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
-		F78C43C02A14B6EE001A0C5B /* RecipePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePopupView.swift; sourceTree = "<group>"; };
 		F78C43CD2A16362C001A0C5B /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,7 +90,6 @@
 				F78C43CD2A16362C001A0C5B /* DiscoverView.swift */,
 				F72B5A602A0AAE350049B3E3 /* FavoritesVIew.swift */,
 				F72B5A5A2A0AADE70049B3E3 /* IdentifyView.swift */,
-				F78C43C02A14B6EE001A0C5B /* RecipePopupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,7 +199,6 @@
 				F72B5A5B2A0AADE70049B3E3 /* IdentifyView.swift in Sources */,
 				F72B5A392A0AAAE60049B3E3 /* RecipeLabApp.swift in Sources */,
 				F76704F22A0AC50200E89ED6 /* LoremPicsum.swift in Sources */,
-				F78C43C12A14B6EE001A0C5B /* RecipePopupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

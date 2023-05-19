@@ -1,7 +1,7 @@
 //
 //  IdentifyView.swift
 //  RecipeLab
-//
+//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
 //  Created by Asadbek Nematov on 5/9/23.
 //
 import SwiftUI
@@ -71,7 +71,7 @@ struct IdentifyView: View {
                     Text("Search Results:")
                     List(searchResults) { ingredient in
                         HStack {
-                            URLImage(url: "https://spoonacular.com/cdn/ingredients_100x100/\(ingredient.image)")
+                            URLIngImage(url: "https://spoonacular.com/cdn/ingredients_100x100/\(ingredient.image)")
                             Text(ingredient.name.capitalized)
                                 .textInputAutocapitalization(.sentences)
 
@@ -93,7 +93,7 @@ struct IdentifyView: View {
                     List {
                         ForEach(ingredientList.indices, id: \.self) { index in
                             HStack {
-                                URLImage(url: "https://spoonacular.com/cdn/ingredients_100x100/\(ingredientList[index].image)")
+                                URLIngImage(url: "https://spoonacular.com/cdn/ingredients_100x100/\(ingredientList[index].image)")
                                 Text(ingredientList[index].name.capitalized)
                                     .textInputAutocapitalization(.sentences)
 
@@ -139,8 +139,12 @@ struct IdentifyView: View {
 
 
     func loadRecipes() {
-        let ingredientNames = ingredientList.map { $0.name }.joined(separator: ",+")
-        let url = URL(string: "https://api.spoonacular.com/recipes/findByIngredients?ingredients=\(ingredientNames)&number=5&apiKey=e51d14bc19d6447d8c63c52f7a62e9e1")!
+        let ingredientNames = ingredientList.map { $0.name }.joined(separator: ",")
+        let urlString = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=\(ingredientNames)&number=5&apiKey=e51d14bc19d6447d8c63c52f7a62e9e1"
+        guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
+            print("Invalid URL")
+            return
+        }
 
         URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
@@ -152,8 +156,8 @@ struct IdentifyView: View {
             })
             .store(in: &cancellables)
         self.showRecipesView = true
-
     }
+
 
 
     // This function should be here, not inside body
@@ -179,7 +183,7 @@ struct IdentifyView: View {
 
 
 }
-struct URLImage: View {
+struct URLIngImage: View {
     @State private var uiImage: UIImage? = nil
     let url: String
 
@@ -226,7 +230,7 @@ struct IdentifyView_Previews: PreviewProvider {
 //                VStack(alignment: .leading) {
 //                    Text(recipe.title)
 //                        .font(.headline)
-//                    URLImage(url: recipe.image)
+//                    URLIngImage(url: recipe.image)
 //                    Text("Missing Ingredients:")
 //                    ForEach(recipe.missedIngredients) { ingredient in
 //                        Text(ingredient.name)

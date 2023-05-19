@@ -187,8 +187,9 @@ struct StackCardView: View {
             let size = proxy.size
             ZStack {
                 HStack{
-                    URLImage(url: recipe.image)
+                    URLSwipeImage(url: recipe.image)
                 }
+                .frame(width: size.width, height: size.height)
                 .cornerRadius(15)
                 .padding(.horizontal, 10)
                 
@@ -202,6 +203,7 @@ struct StackCardView: View {
                             .font(.title)
                             .foregroundColor(.white)
                             .bold()
+                        
                         ForEach(recipe.missedIngredients, id: \.id) { ingredient in
                             Text(ingredient.name)
                                 .font(.body)
@@ -278,28 +280,28 @@ struct StackCardView: View {
                         }
                     })
             )
-//            .onReceive(NotificationCenter.default.publisher(for: Notification.Name("ACTIONFROMBUTTON"))) { data in
-//                guard let info = data.userInfo else { return }
-//                let id = info["id"] as? String ?? ""
-//                let rightSwipe = info["rightSwipe"] as? Bool ?? false
-//                let width = UIScreen.main.bounds.width - 50
-//                
-//                if recipe.id == id {
-//                    
-//                    // removing card...
-//                    withAnimation {
-//                        offset = (rightSwipe ? width : -width) * 2
-//                        endSwipeActions()
-//                        
-//                        if rightSwipe {
-//                            self.rightSwipe()
-//                        } else {
-//                            leftSwipe()
-//                        }
-//                    }
-//                }
-//                
-//            }
+            .onReceive(NotificationCenter.default.publisher(for: Notification.Name("ACTIONFROMBUTTON"))) { data in
+                guard let info = data.userInfo else { return }
+                let id = info["id"] as? String ?? ""
+                let rightSwipe = info["rightSwipe"] as? Bool ?? false
+                let width = UIScreen.main.bounds.width - 50
+                
+                if let id = info["id"] as? Int, recipe.id == id {
+                    
+                    // removing card...
+                    withAnimation {
+                        offset = (rightSwipe ? width : -width) * 2
+                        endSwipeActions()
+                        
+                        if rightSwipe {
+                            self.rightSwipe()
+                        } else {
+                            leftSwipe()
+                        }
+                    }
+                }
+                
+            }
             
         }
         
@@ -346,9 +348,44 @@ struct StackCardView: View {
         }
         
     }
-    
-    
-    
+
+struct URLSwipeImage: View {
+    @State private var uiImage: UIImage? = nil
+    let url: String
+
+    var body: some View {
+        Group {
+            if let image = self.uiImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .overlay(
+                        LinearGradient(
+                            gradient: Gradient(colors: [Color.black.opacity(0.0), Color.black.opacity(1.5)]),
+                            startPoint: .center,
+                            endPoint: .bottom)
+                    )
+                    .cornerRadius(50)
+            } else {
+                ProgressView()
+            }
+        }.onAppear(perform: loadImage)
+    }
+    func loadImage() {
+        guard let imageURL = URL(string: url) else {
+            return
+        }
+
+        URLSession.shared.dataTask(with: imageURL) { data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.uiImage = image
+                }
+            }
+        }.resume()
+    }
+}
+
 
 struct ExploreView_Previews: PreviewProvider {
     static var previews: some View {
