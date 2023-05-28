@@ -4,7 +4,7 @@
 //
 //  Created by Asadbek Nematov on 5/9/23.
 //
-
+  
 import SwiftUI
 import LoremSwiftum
 
