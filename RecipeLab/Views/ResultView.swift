@@ -387,7 +387,7 @@ struct URLSwipeImage: View {
 }
 
 
-struct ExploreView_Previews: PreviewProvider {
+struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         ResultView(viewModel: HomeViewModel(recipes: [
             PopupRecipe(id: 1, title: "Test Recipe", image: "https://via.placeholder.com/150", missedIngredients: [

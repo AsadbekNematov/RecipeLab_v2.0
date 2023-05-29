@@ -4,6 +4,7 @@
 //
 //  Created by Asadbek Nematov on 5/9/23.
 //
+//fix an error in explore view MAY 29 2023
   
 import SwiftUI
 import LoremSwiftum
@@ -30,7 +31,7 @@ struct ContentView: View {
                         .font(.custom("MontserratRoman-Regular", size: 18))
                 }
                 .tag(1)
-            DiscoverView()
+            ExploreView()
                 .tabItem {
                     Image(systemName: "magnifyingglass.circle.fill")
                     Text("Explore")
