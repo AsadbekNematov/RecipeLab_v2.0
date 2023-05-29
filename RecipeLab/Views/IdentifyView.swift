@@ -111,7 +111,7 @@ struct IdentifyView: View {
                     }
                 }
                 //
-                NavigationLink(destination: ExploreView(viewModel: HomeViewModel(recipes: convertToPopupRecipes(recipeResults)))) {
+                NavigationLink(destination: ResultView(viewModel: HomeViewModel(recipes: convertToPopupRecipes(recipeResults)))) {
                     HStack{
                         Text("Recipes")
                         Image(systemName: "fork.knife")
@@ -127,7 +127,7 @@ struct IdentifyView: View {
                     .scenePadding(.horizontal)
                 }
             }.sheet(isPresented: $showingRecipesPopup) {
-                ExploreView(viewModel: HomeViewModel(recipes: convertToPopupRecipes(recipeResults)))
+                ResultView(viewModel: HomeViewModel(recipes: convertToPopupRecipes(recipeResults)))
             }
 
         }

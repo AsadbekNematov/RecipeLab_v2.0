@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - Explore View
 
-struct ExploreView: View {
+struct ResultView: View {
     
     @ObservedObject var viewModel: HomeViewModel
     
@@ -389,7 +389,7 @@ struct URLSwipeImage: View {
 
 struct ExploreView_Previews: PreviewProvider {
     static var previews: some View {
-        ExploreView(viewModel: HomeViewModel(recipes: [
+        ResultView(viewModel: HomeViewModel(recipes: [
             PopupRecipe(id: 1, title: "Test Recipe", image: "https://via.placeholder.com/150", missedIngredients: [
                 Ingredient(id: 1, name: "Test Ingredient 1", image: "https://via.placeholder.com/150"),
                 Ingredient(id: 2, name: "Test Ingredient 2", image: "https://via.placeholder.com/150")
